@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Quiz Timer",
+  "description": "An interactive trivia quiz application with a dynamic countdown timer, direct feedback, and high-performance layout.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

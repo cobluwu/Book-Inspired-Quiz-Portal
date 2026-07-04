@@ -1,0 +1,246 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Caveat:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-hand: "Caveat", cursive;
+  --font-sketch: "Architects Daughter", cursive;
+}
+
+/* Notebook ruled paper style */
+.notebook-ruled {
+  background-color: #faf9f5;
+  background-image: linear-gradient(rgba(224, 231, 255, 0.5) 1px, transparent 1px);
+  background-size: 100% 1.75rem;
+  line-height: 1.75rem;
+}
+
+.dark .notebook-ruled,
+:where(.dark) .notebook-ruled {
+  background-color: #18181b; /* zinc-900 */
+  background-image: linear-gradient(rgba(63, 63, 70, 0.4) 1px, transparent 1px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .notebook-ruled {
+    background-color: #18181b;
+    background-image: linear-gradient(rgba(63, 63, 70, 0.4) 1px, transparent 1px);
+  }
+}
+
+/* Left margin notebook line */
+.notebook-margin {
+  position: relative;
+}
+.notebook-margin::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 3.5rem;
+  bottom: 0;
+  width: 2px;
+  background-color: rgba(239, 68, 68, 0.4); /* Red margin line */
+  pointer-events: none;
+}
+
+/* Irregular hand-drawn sketch borders */
+.sketch-border {
+  border: 2px solid #2e303d;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+
+.sketch-border-sm {
+  border: 1.5px solid #2e303d;
+  border-radius: 120px 10px 110px 10px/10px 110px 10px 120px;
+}
+
+.sketch-border-thick {
+  border: 3px solid #1e293b;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+
+.dark .sketch-border,
+:where(.dark) .sketch-border,
+.dark .sketch-border-sm,
+:where(.dark) .sketch-border-sm,
+.dark .sketch-border-thick,
+:where(.dark) .sketch-border-thick {
+  border-color: #3f3f46; /* zinc-700 */
+}
+
+/* Pencil hand-drawn style highlights */
+.pencil-highlight-blue {
+  background: rgba(59, 130, 246, 0.12);
+}
+.dark .pencil-highlight-blue,
+:where(.dark) .pencil-highlight-blue {
+  background: rgba(59, 130, 246, 0.25);
+}
+
+.pencil-highlight-yellow {
+  background: rgba(254, 240, 138, 0.4);
+}
+.dark .pencil-highlight-yellow,
+:where(.dark) .pencil-highlight-yellow {
+  background: rgba(254, 240, 138, 0.15);
+}
+
+.pencil-highlight-red {
+  background: rgba(239, 68, 68, 0.1);
+}
+.dark .pencil-highlight-red,
+:where(.dark) .pencil-highlight-red {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.pencil-highlight-green {
+  background: rgba(16, 185, 129, 0.12);
+}
+.dark .pencil-highlight-green,
+:where(.dark) .pencil-highlight-green {
+  background: rgba(16, 185, 129, 0.25);
+}
+
+/* Custom ink colors */
+.ink-blue {
+  color: #1e3a8a; /* Indigo-900 */
+}
+
+.ink-pencil {
+  color: #1e293b; /* Slate-800 */
+}
+
+/* High contrast shadows that feel flat/retro rather than glossy */
+.sketch-shadow {
+  box-shadow: 4px 4px 0px 0px #1e293b;
+}
+
+.sketch-shadow-sm {
+  box-shadow: 2px 2px 0px 0px #1e293b;
+}
+
+.sketch-shadow-hover:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0px 0px #1e293b;
+}
+
+.sketch-shadow-active:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px 0px #1e293b;
+}
+
+/* Eraser correction scribble animations or static effect */
+.correction-line {
+  position: relative;
+}
+.correction-line::after {
+  content: '';
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 50%;
+  height: 2px;
+  background: #ef4444;
+  transform: rotate(-1.5deg);
+  pointer-events: none;
+}
+
+/* Marker underline effect */
+.marker-underline {
+  position: relative;
+}
+.marker-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  width: 100%;
+  height: 6px;
+  background: rgba(253, 224, 71, 0.5); /* translucent yellow marker */
+  z-index: -1;
+  border-radius: 4px;
+}
+
+/* Micro-wobble for sketches to feel alive */
+@keyframes sketch-wobble {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(0.1deg); }
+  50% { transform: rotate(-0.1deg); }
+  75% { transform: rotate(0.05deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.sketch-wobble-hover:hover {
+  animation: sketch-wobble 0.25s infinite ease-in-out;
+}
+
+/* 3D Book Cover & Page Flip Animations */
+.perspective-1500 {
+  perspective: 1500px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Book outer cover styling */
+.book-cover {
+  background: #4a1525; /* Crimson/maroon leather cover */
+  background-image: 
+    radial-gradient(rgba(212, 175, 55, 0.15) 1px, transparent 0),
+    radial-gradient(rgba(0, 0, 0, 0.2) 1.5px, transparent 0);
+  background-size: 8px 8px, 16px 16px;
+  border-radius: 6px 16px 16px 6px;
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.4),
+    inset 4px 0 10px rgba(0, 0, 0, 0.2),
+    inset -2px 0 5px rgba(255, 255, 255, 0.1);
+}
+
+.book-spine-left {
+  background: linear-gradient(to right, 
+    rgba(0,0,0,0.5) 0%, 
+    rgba(0,0,0,0.1) 20%, 
+    rgba(255,255,255,0.1) 50%, 
+    rgba(0,0,0,0.2) 80%, 
+    rgba(0,0,0,0.4) 100%
+  );
+}
+
+/* Inner page text clipping gradient */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #fcebb6 0%, #e3c75f 25%, #a8841a 50%, #e3c75f 75%, #fcebb6 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0px 2px 2px rgba(0,0,0,0.4);
+}
+
+/* Transform origin for opening the book */
+.flip-origin-left {
+  transform-origin: left center;
+}
+
+/* Writing modes */
+.writing-mode-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* Scrollbar hiding for cleaner look */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.5);
+  border-radius: 10px;
+}
